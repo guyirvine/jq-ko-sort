@@ -1,0 +1,19 @@
+thead {
+	background-color: #0A94D6;
+	color: white;
+}
+
+th {
+	cursor: pointer;
+}
+
+th.headerSortDown, th.headerSortUp, th.headerSortDown:hover, th.headerSortUp:hover {
+	background-color: rgba( 255, 255, 255, 0.2)
+}
+th.headerSortUp {
+        background-image: url(images/asc.gif);
+}
+th.headerSortDown {
+        background-image: url(images/desc.gif);
+}
+

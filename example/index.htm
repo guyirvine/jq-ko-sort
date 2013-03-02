@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Agrimetrics</title>
+        <script src="js/jquery-1.7.2.min.js"></script>
+        <script src="js/knockout-2.1.0.js"></script>
+        
+        <script src="../jquery.ko.sort.js"></script>
+        <link type="text/css" href="jquery.ko.sort.css" rel="stylesheet" />
+    </head>
+    <body>
+
+        <table cellspacing="0" id="examplelist" class="examplelist">
+            <thead>
+                <tr>
+                    <th class="number">Field 1</th>
+                    <th class="date">Field 2</th>
+                    <th class="number">Field 3</th>
+                </tr>
+            </thead>
+            
+            <tbody data-bind="foreach: list">
+                <tr>
+                    <td data-bind="text: field1" class="number">17</td>
+                    <td data-bind="text: field2" class="date">9 Oct 2012</td>
+                    <td data-bind="text: field3" class="number">3.5</td>
+                </tr>
+                
+            </tbody>
+        </table>
+        
+    </body>
+</html>
+
+<script>
+    function ViewModel() {
+        var self = this;
+
+        self.list = ko.observableArray();
+        
+        self.add = function( f1, f2, f3 ) {
+            self.list.push( { "field1": ko.observable(f1), "field2": ko.observable(f2), "field3": ko.observable(f3) } );
+        }
+    }
+    
+    
+    $(function() {
+      viewModel = new ViewModel();
+      
+      a = new jqkosort( viewModel.list, "#examplelist" );
+      ko.applyBindings( viewModel, $("#examplelist")[0]);
+      
+      viewModel.add( "A1", "A2", "A3" );
+      viewModel.add( "B1", "B2", "B3" );
+      viewModel.add( "C1", "C2", "C3" );
+      });
+      
+    </script>
